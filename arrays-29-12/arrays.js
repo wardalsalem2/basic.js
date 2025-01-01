@@ -9,18 +9,17 @@ Correct the syntax error
 */
 
  let a = [1,7,9,45];
- let b = ["Str","alex","moh"];
+ var b = ["Str","alex","moh"];
  let v =  ['the','fox','over','lazy', 'dog'];  
 
 
 
 // 2
 // What the index of "Banana","Tomato"
-// var fruits=["Tomato","Banana","Watermelon"]
-
-// var fruits=["Tomato","Banana","Watermelon"];
-// console.log(fruits.indexOf("Tomato"));
-// console.log(fruits.indexOf("Banana"));
+var fruits=["Tomato","Banana","Watermelon"]
+var fruits=["Tomato","Banana","Watermelon"];
+console.log(fruits.indexOf("Tomato"));
+console.log(fruits.indexOf("Banana"));
 
 /*
 3
@@ -30,7 +29,7 @@ Create an array represents your:
 3- Favorite Movie (4)
 */
 var food =["shawerma","maglubeh", "kabseh","uozy","mashawee"];
-var sport = [ " playbool", "sweeming","bascetbool"];
+var sport = [ " playball", "sweeming","basketball"];                        
 let Movie =["unknown","unknown","unknown"];
 
 /*

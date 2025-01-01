@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise #2: Changing box color on click</title>
+    <style>
+        #mydiv {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            background-color: red;
+        }
+    </style>
+    <script>
+        let i=0;
+        function changC(obj) {
+        const arrcolor=["blue","yellow","green"];
+        document.getElementById("mydiv").style.backgroundColor = `${arrcolor[i]}`;
+        i++;
+}
+    </script>
+</head>
+<body>
+<div id="mydiv" onclick="changC()"></div>
+</body>
+</html>

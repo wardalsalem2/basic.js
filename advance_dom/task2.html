@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4> Temperature Converter </h4>
+    <label>Celsius</label>
+    <input id="Ce" type="number" size="20" placeholder="degrees Celsius">
+    <br> <br>
+    <label>Fahrenheit</label>
+    <input id="Fa" type="number" size="20" placeholder="degrees Fahrenheit" >
+    <br> <br>
+    <input onclick="con_temp()" type="button" value="Convert" style="margin-left: 100presult;">
+    <script>
+function con_temp(){
+    const Celsius = document.getElementById("Ce");
+    const Fahrenheit = document.getElementById("Fa");
+    
+if( Celsius.value =="" && Fahrenheit.value =="" ){
+    alert("Please enter only one temperature to convert.");
+    }
+else if(Celsius.value !==""){
+        x = (Celsius.value * 9/5) + 32;
+        Fahrenheit.value = x; 
+    }
+else if ( Fahrenheit.value !==""){
+        y = (Fahrenheit.value - 32) * 5/9;
+        Celsius.value = y;
+    }
+}
+</script>
+</body>
+</html>

@@ -1,100 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Table Filter</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 20px;
-        }
-        input {
-            padding: 8px;
-            margin-bottom: 20px;
-            width: 200px;
-            font-size: 16px;
-        }
-        table {
-            width: 80%;
-            margin: 0 auto;
-            border-collapse: collapse;
-            text-align: left;
-        }
-        th, td {
-            padding: 12px;
-            border: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .highlight {
-            background-color: yellow;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Searchable Table</title>
+  <style>
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    }
+    th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    }
+    th {
+    background-color: #f4f4f4;
+    }
+    .highlight {
+    background-color: yellow;
+    }
+</style>
 </head>
 <body>
-    <h1>Searchable Table</h1>
-    <input type="text" id="search-input" placeholder="Search...">
-    <table id="data-table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Country</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>John Doe</td>
-                <td>25</td>
-                <td>USA</td>
-            </tr>
-            <tr>
-                <td>Mary Smith</td>
-                <td>30</td>
-                <td>Canada</td>
-            </tr>
-            <tr>
-                <td>James Brown</td>
-                <td>22</td>
-                <td>UK</td>
-            </tr>
-            <tr>
-                <td>Linda White</td>
-                <td>29</td>
-                <td>Australia</td>
-            </tr>
-            <tr>
-                <td>Michael Johnson</td>
-                <td>35</td>
-                <td>USA</td>
-            </tr>
-        </tbody>
-    </table>
+<h1>Searchable Table</h1>
+<input type="text" id="searchInput" placeholder="Search..." style="margin-bottom: 10px; width: 100%; padding: 8px;">
 
-    <script>
-document.getElementById("search-input").addEventListener("input", function() {
-    const searchValue = this.value.toLowerCase();
-    const rows = document.querySelectorAll("#data-table tbody tr"); 
+<table id="dataTable">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>City</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>John Doe</td>
+        <td>28</td>
+        <td>New York</td>
+    </tr>
+    <tr>
+        <td>Jane Smith</td>
+        <td>34</td>
+        <td>Los Angeles</td>
+    </tr>
+    <tr>
+        <td>Sam Wilson</td>
+        <td>22</td>
+        <td>Chicago</td>
+    </tr>
+    <tr>
+        <td>Emily Johnson</td>
+        <td>45</td>
+        <td>Houston</td>
+    </tr>
+    </tbody>
+</table>
+
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const table = document.getElementById('dataTable');
+    const rows = table.querySelectorAll('tbody tr');
+    searchInput.addEventListener('input', function () {
+    const query = searchInput.value.toLowerCase();
+
     rows.forEach(row => {
-        const cells = row.getElementsByTagName("td");
-        let matchFound = false; 
+        const cells = row.querySelectorAll('td');
+        let rowContainsQuery = false;
 
-        for (let cell of cells) {
-            if (cell.textContent.toLowerCase().includes(searchValue)) {
-                matchFound = true; 
-                cell.innerHTML = cell.textContent.replace(
-                    new RegExp(searchValue, "gi"),
-                    match => `<span class="highlight">${match}</span>` );
-            } else {
-                cell.innerHTML = cell.textContent;
-            }
+        cells.forEach(cell => {
+        const cellText = cell.textContent.toLowerCase();
+
+        if (cellText.includes(query)) {
+            rowContainsQuery = true;
+            const regex = new RegExp(`(${query})`, 'gi');
+            cell.innerHTML = cell.textContent.replace(regex, '<span class="highlight">$1</span>');} 
+        else {
+            cell.innerHTML = cell.textContent;
         }
-        row.style.display = matchFound ? "" : "none";
+        });
+
+        row.style.display = rowContainsQuery ? '' : 'none';
+        });
     });
-});
-    </script>
+</script>
 </body>
 </html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>store</title>
+    <style>
+        body {
+        transition: background-color 0.5s, color 0.5s;
+        }
+
+        body.light-mode {
+        background-color: white;
+        color: black;
+        }
+
+        body.dark-mode {
+        background-color: black;
+        color: black;
+        }
+        .cards{
+            display: flex;
+            flex-direction: row;
+            justify-items: center;
+            justify-content: space-evenly;
+        }
+        .cards input{
+            background-color: blue;
+            color: white;
+        }
+        .card1{
+            border: solid black 1 px;
+        }
+        .contant{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;   
+            border-radius: 10px;
+            margin-top: 5px;
+            background-color: rgba(169, 169, 169, 0.814);
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .ininput{
+            margin-left: 40px; 
+            margin-bottom: 20px;
+            margin-top: 10px;
+            border-radius: 8px;
+            width: 150px;
+            height: 50px; 
+            font-size: large;
+        }
+        .shop{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin-top: 10rem;
+            }
+
+        .midcontent{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        #shop1{
+            display: none;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+        #shop2{
+            display: none;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+        #shop3{
+            display: none;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        .midcontent div img{
+            width: 120px;
+            height: 70px;
+        }
+        #btn{
+            width: 150px;
+            height: 50px;
+            background-color: rgb(11, 238, 212);
+            color: black;
+            font-size: large;
+            font-weight: bold;
+            margin-bottom: 40px;
+            margin-top: 40px;
+            margin-left: 40px;
+        }
+        .tot{
+            justify-items: center;
+            margin-top: 50px;
+            color: red;
+        }
+        .tot p{
+            font-weight: bolder;
+            font-size: large;
+        }
+        #place1{
+            color: darkblue;
+            font-weight: bolder;
+            font-size: larger;
+        }
+        #place2{
+            color: darkblue;
+            font-weight: bolder;
+            font-size: larger;
+        }
+        #place3{
+            color: darkblue;
+            font-weight: bolder;
+            font-size: larger;
+        }
+        .price1{
+            color: darkblue;
+            font-weight: bolder;
+            font-size: larger;
+        }
+        .price2{
+            color: darkblue;
+            font-weight: bolder;
+            font-size: larger;
+        }
+        .price3{
+            color: darkblue;
+            font-weight: bolder;
+            font-size: larger;
+        }
+        .del{
+            background-color: red;
+            color: white;
+            border-radius: 10px solid;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div style="display: inline-flex ;"> <button id="btn" type=""> Dark or Light</button></div>
+    <div class="cards">
+        <div class="card1">
+        <div><img src="iphone.jpeg" alt="" style="border-radius: 8px solid"></div>
+        <div class="contant" >
+            <h3>Iphone 13pro</h3> 
+            <h3>1000 Jd</h3>
+        </div>
+        <div class="input" > <input onclick="iphon()" class="ininput" type="button" value="Add to Chart"> </div>
+        </div>
+    
+        <div class="card1">
+        <div>
+            <img src="headphone.jpeg" alt="" style="border-radius: 8px solid; height: 230px; width: 225px;">
+        </div>
+        <div class="contant" >
+            <h3>Head Phone</h3> 
+            <h3>99Jd</h3>
+        </div>
+        <div class="input"> <input onclick="headphone()" class="ininput" type="button" value="Add to Chart" > </div>
+        </div>
+    
+        <div class="card1">
+        <div><img src="airbods.jpeg" alt="" style="border-radius: 8px solid"></div>
+        <div class="contant" >
+            <h3>Airboods</h3> 
+            <h3>50Jd</h3>
+        </div>
+        <div class="input"> <input onclick="airbods()" class="ininput" type="button" value="Add to Chart" > </div>
+        </div>
+    </div>
+
+        <div class="midcontent" id="midcontent">
+        <div class="shop1" id="shop1">
+            <img src="iphone.jpeg" alt="img">
+            <div class="calcu">
+            <button onclick="calc1()"> - </button>
+            <span id="place1"> 0</span>
+            <button onclick="calc11()"> + </button>
+            </div>
+            <p class="price1" id="price1">0</p>
+            <input class="del" onclick="deliphone()" type="button" value="X">
+            </div>
+
+        <div class="shop2" id="shop2">
+            <img src="headphone.jpeg" alt="img">
+            <div class="calcu"> 
+            <button onclick="calc2()" > - </button>
+            <span id="place2"> 0</span>
+            <button onclick="calc22()"> + </button>
+            </div>
+            <p class="price2" id="price2">0</p>
+            <input class="del" onclick="delheadphone()"  type="button" value="X">
+
+        </div>
+        <div class="shop3" id="shop3">
+            <img src="airbods.jpeg" alt="img">
+            <div class="calcu">
+            <button onclick="calc3()"> - </button>
+            <span id="place3"> 0 </span>
+            <button onclick="calc33()"> + </button>
+            </div>
+            <p class="price3" id="price3" >0</p>
+            <input class="del" onclick="delairbods()" type="button" value="X">
+        </div>
+</div>
+
+    <div class="tot">
+        <h1> total price</h1>
+        <p id="totalpr"> </p>
+    </div>
+
+        <script>
+            window.onload = function () {
+            if (!sessionStorage.getItem("sum1")) sessionStorage.setItem("sum1", 0);
+            if (!sessionStorage.getItem("sum2")) sessionStorage.setItem("sum2", 0);
+            if (!sessionStorage.getItem("sum3")) sessionStorage.setItem("sum3", 0);
+            total();
+    };
+            function iphon(){
+            const shop1 = document.getElementById("shop1");
+            shop1.style.display= "flex"
+            }
+            function headphone(){
+            const shop2 = document.getElementById("shop2");
+            shop2.style.display= "flex"
+            }
+            function airbods(){
+            const shop3 = document.getElementById("shop3");
+            shop3.style.display= "flex"
+            }
+
+            // ------------ for card ----------- 
+            function deliphone(){
+                const shop1 = document.getElementById("shop1");
+                shop1.style.display= "none";
+                var place1 = document.getElementById("place1");
+                place1.textContent="0";
+                var price1 = document.getElementById("price1");
+                price1.textContent ="0" 
+                sessionStorage.setItem("sum1", "0")
+                total();
+            }
+            function delheadphone(){
+                const shop2 = document.getElementById("shop2");
+                shop2.style.display= "none";
+                var place2 = document.getElementById("place2");
+                place2.textContent="0";
+                var price2 = document.getElementById("price2");
+                price2.textContent ="0" 
+                sessionStorage.setItem("sum2", "0")
+                total();
+            }
+            function delairbods(){
+                const shop3 = document.getElementById("shop3");
+                shop3.style.display= "none";
+                var place3 = document.getElementById("place3")
+                place3.textContent="0";
+                var price3 = document.getElementById("price3");
+                price3.textContent ="0" 
+                sessionStorage.setItem("sum3", "0")
+                total();
+            }
+// --------------- for delet shoping --------------->
+
+            function calc1(){
+            var place1 = document.getElementById("place1");
+            let number = parseInt(place1.textContent);
+            if(number<=0){
+                return; 
+            }
+            sum = number -1;
+            place1.textContent= sum;
+            document.getElementById("price1").textContent= (sum *  1000)
+            sessionStorage.setItem("sum1", sum);
+            total();
+            }
+            
+            function calc11(){
+            var place1 = document.getElementById("place1");
+            let number = parseInt(place1.textContent);
+            sum = number +1;
+            place1.textContent= sum;
+            document.getElementById("price1").textContent= (sum *  1000)
+            sessionStorage.setItem("sum1", sum);
+            total();
+            }
+
+            function calc2(){
+            var place2 = document.getElementById("place2");
+            let number = parseInt(place2.textContent);
+            if(number<=0){
+                return; 
+            }
+            sum = number -1;
+            var price1 = document.getElementById("price2");
+            let numprice1 = parseInt(price1.textContent);
+            place2.textContent = sum;
+            document.getElementById("price2").textContent =(sum * 99);
+            sessionStorage.setItem("sum2", sum); 
+            total();
+            }
+
+            function calc22(){
+            var place2 = document.getElementById("place2");
+            let number = parseInt(place2.textContent);
+            sum= number  +1;
+            place2.textContent = sum;
+            document.getElementById("price2").textContent =(sum * 99);
+            sessionStorage.setItem("sum2", sum);
+            total();
+            }
+
+            function calc3(){
+            var place3 = document.getElementById("place3");
+            let number = parseInt(place3.textContent);
+            if(number<=0){
+                return; 
+            }
+            sum = number -1;
+            place3.textContent = sum;
+            document.getElementById("price3").textContent=(sum * 50);
+            sessionStorage.setItem("sum3", sum);
+            total();
+            }
+
+            function calc33(){
+            var place3 = document.getElementById("place3");
+            let number = parseInt(place3.textContent);
+            sum= number  +1;
+            place3.textContent = sum;
+            document.getElementById("price3").textContent=(sum * 50);
+            sessionStorage.setItem("sum3", sum);
+            total();
+            }
+
+            function total() {
+            var totalpr = document.getElementById("totalpr");
+            let place1 = parseInt(sessionStorage.getItem("sum1") || 0);
+            let place2 = parseInt(sessionStorage.getItem("sum2") || 0);
+            let place3 = parseInt(sessionStorage.getItem("sum3") || 0);
+            totalpr.textContent = place1 * 1000 + place2 * 99 + place3 * 50;
+    }
+
+
+            window.onload = function () {
+            const savedMode = sessionStorage.getItem("mode");
+            const body = document.body;
+            if (savedMode === "dark-mode") {
+                body.classList.add("dark-mode");
+            } else {
+                body.classList.add("light-mode");
+            }
+            };
+            document.getElementById("btn").addEventListener("click", function () {
+            const body = document.body;
+
+            if (body.classList.contains("light-mode")) {
+                body.classList.remove("light-mode");
+                body.classList.add("dark-mode");
+                sessionStorage.setItem("mode", "dark-mode"); 
+            } else {
+                body.classList.remove("dark-mode");
+                body.classList.add("light-mode");
+                sessionStorage.setItem("mode", "light-mode"); 
+            }
+        });
+
+        </script>
+</body>
+</html>

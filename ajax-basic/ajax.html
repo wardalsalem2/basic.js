@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>AJAX Request</h1>
+        <input id="ward" onkeyup="onkey() " type="text" placeholder="Enter text">
+        <input onclick="coby()" type="button" value="Send Comment">
+    </div>
+    <h1>Get Comment: <span id="text"></span></h1>
+    <h1 id="list"> </h1>
+    <script>
+        function onkey(){
+            var ward = document.getElementById("ward").value;
+            var text =document.getElementById("text");
+            text.textContent = ward;
+        }
+        function coby() { 
+            var print1 = document.getElementById("ward").value;
+            const getdata = new XMLHttpRequest();
+            getdata.setRequestHeader("Custom-Header",document.getElementById("ward").value);
+            getdata.onload = function(){
+            document.getElementById("list").innerHTML = this.responseText;
+        };
+            getdata.open("GET",`http://127.0.0.1:5500/ajax.html?query=${encodeURIComponent(print1)}`,true);
+            getdata.send();
+        }
+    </script>
+</body>
+</html> 
+
+
+
